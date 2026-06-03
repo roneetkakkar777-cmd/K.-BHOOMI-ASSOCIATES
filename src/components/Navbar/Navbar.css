@@ -1,0 +1,9 @@
+/* Navbar CSS - Additional styles not covered by Tailwind */
+.navbar-logo-shimmer {
+  background: linear-gradient(90deg, #D4AF37, #E8C94A, #D4AF37);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}

@@ -1,3 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =========================================
+   ROOT VARIABLES & BASE STYLES
+   ========================================= */
+:root {
+  --primary: #0B1120;
+  --secondary: #111827;
+  --gold: #D4AF37;
+  --gold-light: #E8C94A;
+  --gold-dark: #B8961E;
+  --text-light: #F8FAFC;
+  --text-gray: #94A3B8;
+  --bg-white: #FFFFFF;
+  --light-section: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Variables */
+.dark {
+  --bg-white: #0B1120;
+  --light-section: #111827;
+  --card-bg: #1a2235;
+  --border: #2d3748;
+  --text-dark: #F8FAFC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FFFFFF;
+  color: #0B1120;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background-color: #0B1120;
+  color: #F8FAFC;
+}
+
+/* =========================================
+   SCROLLBAR STYLING
+   ========================================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8961E;
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+@layer utilities {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .heading-xl {
+    @apply font-poppins font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight;
+  }
+
+  .heading-lg {
+    @apply font-poppins font-bold text-3xl md:text-4xl lg:text-5xl leading-tight;
+  }
+
+  .heading-md {
+    @apply font-poppins font-bold text-2xl md:text-3xl leading-tight;
+  }
+
+  .heading-sm {
+    @apply font-poppins font-semibold text-xl md:text-2xl;
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D4AF37, #E8C94A, #B8961E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+
+  .glass-card-dark {
+    @apply bg-primary/80 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-primary font-poppins font-semibold px-6 py-3 rounded-full 
+           transition-all duration-300 hover:bg-gold-light hover:shadow-gold-lg 
+           hover:-translate-y-0.5 inline-flex items-center gap-2;
+  }
+
+  .btn-outline-gold {
+    @apply border-2 border-gold text-gold font-poppins font-semibold px-6 py-3 rounded-full 
+           transition-all duration-300 hover:bg-gold hover:text-primary 
+           hover:shadow-gold hover:-translate-y-0.5 inline-flex items-center gap-2;
+  }
+
+  .btn-dark {
+    @apply bg-primary text-white font-poppins font-semibold px-6 py-3 rounded-full 
+           transition-all duration-300 hover:bg-secondary hover:shadow-card-hover
+           hover:-translate-y-0.5 inline-flex items-center gap-2;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 text-gold font-poppins font-semibold text-sm 
+           uppercase tracking-widest mb-4;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-card-hover;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-borderColor bg-white 
+           font-inter text-primary focus:outline-none focus:ring-2 focus:ring-gold 
+           focus:border-transparent transition-all duration-300 dark:bg-secondary 
+           dark:border-gray-600 dark:text-textLight;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-3 rounded-xl border border-borderColor bg-white 
+           font-inter text-primary focus:outline-none focus:ring-2 focus:ring-gold 
+           focus:border-transparent transition-all duration-300 appearance-none cursor-pointer
+           dark:bg-secondary dark:border-gray-600 dark:text-textLight;
+  }
+}
+
+/* =========================================
+   SWIPER CUSTOM STYLES
+   ========================================= */
+.swiper-pagination-bullet {
+  background: #D4AF37 !important;
+  opacity: 0.4 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #D4AF37 !important;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #D4AF37 !important;
+  color: #0B1120 !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+/* =========================================
+   PAGE TRANSITIONS
+   ========================================= */
+.page-transition {
+  animation: pageSlideIn 0.5s ease forwards;
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   LOADER STYLES
+   ========================================= */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0B1120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #D4AF37;
+  letter-spacing: 0.1em;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0B1120 0%, #111827 100%);
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 17, 32, 0.97) 0%,
+    rgba(11, 17, 32, 0.85) 40%,
+    rgba(11, 17, 32, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+/* =========================================
+   PROPERTY CARD
+   ========================================= */
+.property-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.property-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+.property-card .card-image {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+
+.property-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.property-card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.price-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #D4AF37, #E8C94A);
+  color: #0B1120;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.status-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-available { background: rgba(16, 185, 129, 0.9); color: white; }
+.status-sold { background: rgba(239, 68, 68, 0.9); color: white; }
+.status-featured { background: rgba(212, 175, 55, 0.9); color: #0B1120; }
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+.navbar {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-scrolled {
+  background: rgba(11, 17, 32, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* =========================================
+   GOLD DIVIDER
+   ========================================= */
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #D4AF37, #E8C94A);
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+
+.gold-divider-center {
+  margin: 1rem auto;
+}
+
+/* =========================================
+   TESTIMONIAL CARD
+   ========================================= */
+.testimonial-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border: 1px solid #E5E7EB;
+  transition: all 0.4s ease;
+}
+
+.dark .testimonial-card {
+  background: #1a2235;
+  border-color: #2d3748;
+}
+
+.testimonial-card:hover {
+  border-color: #D4AF37;
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+}
+
+/* =========================================
+   GALLERY MASONRY
+   ========================================= */
+.gallery-grid {
+  columns: 2 250px;
+  gap: 1rem;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   COUNTER SECTION
+   ========================================= */
+.counter-item {
+  position: relative;
+  padding: 2rem;
+}
+
+.counter-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background: rgba(212, 175, 55, 0.3);
+}
+
+.counter-item:last-child::after {
+  display: none;
+}
+
+/* =========================================
+   SEARCH BAR
+   ========================================= */
+.search-bar {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   CATEGORY CARD
+   ========================================= */
+.category-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.category-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,17,32,0.9) 0%, rgba(11,17,32,0.2) 100%);
+  transition: all 0.4s ease;
+}
+
+.category-card:hover::after {
+  background: linear-gradient(to top, rgba(11,17,32,0.95) 0%, rgba(11,17,32,0.4) 100%);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.category-card img {
+  transition: transform 0.6s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+/* =========================================
+   AGENT CARD
+   ========================================= */
+.agent-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+}
+
+.dark .agent-card {
+  background: #1a2235;
+}
+
+.agent-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer-link {
+  @apply text-textGray hover:text-gold transition-colors duration-300 text-sm;
+}
+
+/* =========================================
+   LIGHTBOX
+   ========================================= */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   AOS CUSTOM
+   ========================================= */
+[data-aos] {
+  pointer-events: none;
+}
+
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* =========================================
+   DARK MODE TRANSITIONS
+   ========================================= */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* =========================================
+   RESPONSIVE FIXES
+   ========================================= */
+@media (max-width: 768px) {
+  .gallery-grid {
+    columns: 2 150px;
+  }
+  
+  .counter-item::after {
+    display: none;
+  }
+  
+  .heading-xl {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-xl {
+    font-size: 2rem;
+  }
+}

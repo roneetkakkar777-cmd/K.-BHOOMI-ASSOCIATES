@@ -1,0 +1,66 @@
+// =============================================
+// TESTIMONIALS DATA
+// =============================================
+
+export const testimonials = [
+  {
+    id: 1,
+    name: "Arjun Kapoor",
+    role: "CEO, TechVentures Pvt. Ltd.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+    rating: 5,
+    review: "K.-BHOOMI-ASSOCIATES made our commercial property acquisition completely seamless. Their market expertise, legal assistance, and transparent process are unmatched. We found our perfect office space in just 3 weeks!",
+    property: "Tech Park Office Space, Noida",
+    date: "March 2024",
+  },
+  {
+    id: 2,
+    name: "Sunita Sharma",
+    role: "Homeowner",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
+    rating: 5,
+    review: "We had been searching for our dream home for 2 years. K.-BHOOMI-ASSOCIATES not only found us the perfect villa but guided us through every step — from legal checks to interior suggestions. Truly a trusted partner!",
+    property: "Riverside Dream Villa, Vasundhara",
+    date: "January 2024",
+  },
+  {
+    id: 3,
+    name: "Rohit Agarwal",
+    role: "Real Estate Investor",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+    rating: 5,
+    review: "As a serial investor, I need accurate data and quick execution. K.-BHOOMI-ASSOCIATES delivers on both fronts. Their market insights helped me make 40% ROI on my Noida plot investment. Highly recommended!",
+    property: "Green Valley Plots, Noida",
+    date: "December 2023",
+  },
+  {
+    id: 4,
+    name: "Meera Patel",
+    role: "IT Professional",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
+    rating: 5,
+    review: "Exceptional service from start to finish. The team at K.-BHOOMI-ASSOCIATES was always available, answered all our questions, and ensured we got the best deal on our Vaishali penthouse. Five stars all the way!",
+    property: "Premium Penthouse Suite, Vaishali",
+    date: "November 2023",
+  },
+  {
+    id: 5,
+    name: "Deepak Verma",
+    role: "Business Owner",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80",
+    rating: 5,
+    review: "Professional, transparent, and result-oriented. K.-BHOOMI-ASSOCIATES helped us find the perfect retail space. Their negotiation skills saved us 15% compared to the asking price. Outstanding work!",
+    property: "Modern Corporate Park, Indirapuram",
+    date: "October 2023",
+  },
+  {
+    id: 6,
+    name: "Kavita Reddy",
+    role: "Doctor",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80",
+    rating: 5,
+    review: "The team helped us purchase our Indirapuram bungalow with utmost care and attention. They handled all paperwork, legal verification, and even connected us with reliable interior designers. Amazing experience!",
+    property: "Royal Heritage Bungalow, Indirapuram",
+    date: "September 2023",
+  },
+];
