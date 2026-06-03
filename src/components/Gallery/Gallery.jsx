@@ -64,6 +64,7 @@ const Gallery = () => {
                 src={image}
                 alt={`Property ${index + 1}`}
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/40 transition-all duration-500 flex items-center justify-center">
@@ -115,6 +116,7 @@ const Gallery = () => {
               transition={{ duration: 0.3 }}
               src={GALLERY_IMAGES[activeIndex]}
               alt={`Gallery ${activeIndex + 1}`}
+              referrerPolicy="no-referrer"
               className="max-w-4xl max-h-[80vh] object-contain rounded-2xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />

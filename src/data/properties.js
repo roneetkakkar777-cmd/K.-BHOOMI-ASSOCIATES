@@ -50,7 +50,8 @@ export const properties = [
     status: "Featured",
     featured: true,
     images: [
-      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
       "https://images.unsplash.com/photo-1582063289852-62e3ba2747f8?w=800&q=80",
       "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80",

@@ -38,6 +38,7 @@ const TestimonialCard = ({ testimonial }) => (
       <img
         src={testimonial.image}
         alt={testimonial.name}
+        referrerPolicy="no-referrer"
         className="w-12 h-12 rounded-full object-cover border-2 border-gold/30"
       />
       <div>

@@ -36,6 +36,7 @@ const PropertyCard = ({ property, index = 0 }) => {
           src={property.images[0]}
           alt={property.title}
           loading="lazy"
+          referrerPolicy="no-referrer"
         />
 
         {/* Overlays */}
