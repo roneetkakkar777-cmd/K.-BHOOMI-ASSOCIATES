@@ -71,7 +71,7 @@ export const agents = [
     name: "Ananya Gupta",
     role: "Investment Property Advisor",
     specialization: "Investment & Plots",
-    image: "https://images.unsplash.com/photo-338761681033-6461ffad8d80?w=400&q=80",
+    image: "https://catalog.wlimg.com/service-images/rei/real-estate-agent5.jpg",
     phone: "+91 93120 74174",
     email: "ananya@kbhoomi.in",
     experience: "6+ Years",
