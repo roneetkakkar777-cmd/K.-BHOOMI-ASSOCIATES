@@ -3,7 +3,7 @@
 // =============================================
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -13,8 +13,8 @@ import { useForm } from 'react-hook-form';
 import {
   FaBed, FaBath, FaRulerCombined, FaParking,
   FaMapMarkerAlt, FaHeart, FaShare, FaCheckCircle,
-  FaPhoneAlt, FaEnvelope, FaArrowLeft, FaBuilding,
-  FaCalendar, FaStar
+  FaPhoneAlt, FaEnvelope, FaArrowLeft,
+  FaStar
 } from 'react-icons/fa';
 import { properties } from '../data/properties';
 import { agents } from '../data/agents';

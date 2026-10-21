@@ -38,11 +38,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
+  if (location.pathname !== prevPathname) {
+    setPrevPathname(location.pathname);
     setIsMobileOpen(false);
     setIsSearchOpen(false);
-  }, [location]);
+  }
 
   // Prevent body scroll when mobile menu open
   useEffect(() => {

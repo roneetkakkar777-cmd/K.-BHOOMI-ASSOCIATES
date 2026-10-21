@@ -1,7 +1,6 @@
 // =============================================
 // FEATURED PROPERTIES - SWIPER SECTION
 // =============================================
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,8 +13,6 @@ import PropertyCard from '../PropertyCard/PropertyCard';
 import { featuredProperties } from '../../data/properties';
 
 const FeaturedProperties = () => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
 
   return (
     <section className="section-padding bg-lightSection dark:bg-secondary overflow-hidden">
@@ -51,14 +48,14 @@ const FeaturedProperties = () => {
           >
             {/* Custom Nav Buttons */}
             <button
-              ref={prevRef}
-              className="w-12 h-12 rounded-full border-2 border-gold text-gold hover:bg-gold hover:text-primary transition-all duration-300 flex items-center justify-center"
+              className="featured-prev w-12 h-12 rounded-full border-2 border-gold text-gold hover:bg-gold hover:text-primary transition-all duration-300 flex items-center justify-center cursor-pointer"
+              aria-label="Previous property"
             >
               <FaArrowLeft size={16} />
             </button>
             <button
-              ref={nextRef}
-              className="w-12 h-12 rounded-full bg-gold text-primary hover:bg-gold-light transition-all duration-300 flex items-center justify-center shadow-gold"
+              className="featured-next w-12 h-12 rounded-full bg-gold text-primary hover:bg-gold-light transition-all duration-300 flex items-center justify-center shadow-gold cursor-pointer"
+              aria-label="Next property"
             >
               <FaArrowRight size={16} />
             </button>
@@ -85,12 +82,8 @@ const FeaturedProperties = () => {
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             pagination={{ clickable: true, dynamicBullets: true }}
             navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
+              prevEl: '.featured-prev',
+              nextEl: '.featured-next',
             }}
             breakpoints={{
               640: { slidesPerView: 2 },

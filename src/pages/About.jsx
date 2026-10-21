@@ -3,7 +3,7 @@
 // =============================================
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaAward, FaUsers, FaBuilding, FaHandshake } from 'react-icons/fa';
-import { COMPANY_DESCRIPTION, STATS } from '../utils/constants';
+import { COMPANY_DESCRIPTION } from '../utils/constants';
 import CounterSection from '../components/CounterSection/CounterSection';
 import { agents } from '../data/agents';
 import { Link } from 'react-router-dom';

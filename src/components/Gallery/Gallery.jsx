@@ -1,7 +1,7 @@
 // =============================================
 // GALLERY SECTION
 // =============================================
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaExpand, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { GALLERY_IMAGES } from '../../utils/constants';
@@ -10,15 +10,24 @@ const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    if (lightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [lightboxOpen]);
+
   const openLightbox = (index) => {
     setActiveIndex(index);
     setLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setLightboxOpen(false);
-    document.body.style.overflow = '';
   };
 
   const goNext = () => setActiveIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);

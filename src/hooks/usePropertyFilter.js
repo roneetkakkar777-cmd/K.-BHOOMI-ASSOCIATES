@@ -1,7 +1,7 @@
 // =============================================
 // usePropertyFilter Hook
 // =============================================
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { properties } from '../data/properties';
 
@@ -16,49 +16,53 @@ const initialFilters = {
   sortBy: 'default',
 };
 
+const parseFiltersFromParams = (params) => {
+  const search = params.get('search') || '';
+  const city = params.get('city') || 'All Cities';
+  const bedrooms = params.get('bedrooms') || 'Any';
+  const sortBy = params.get('sortBy') || 'default';
+  
+  let type = params.get('type') || 'All';
+  let category = params.get('category') || '';
+
+  const pluralToSingular = {
+    'Apartments': 'Apartment',
+    'Villas': 'Villa',
+    'Plots': 'Plot',
+    'Commercial': 'Commercial'
+  };
+
+  if (pluralToSingular[type]) {
+    type = pluralToSingular[type];
+  } else if (type === 'Luxury Homes') {
+    category = 'Luxury Homes';
+    type = 'All';
+  }
+
+  return {
+    ...initialFilters,
+    search,
+    type,
+    category,
+    city,
+    bedrooms,
+    sortBy,
+  };
+};
+
 /**
  * Custom hook for property filtering and sorting
  */
 export const usePropertyFilter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState(initialFilters);
+  const [prevParamsString, setPrevParamsString] = useState(searchParams.toString());
+  const [filters, setFilters] = useState(() => parseFiltersFromParams(searchParams));
 
-  // Synchronize URL parameters with filter state
-  useEffect(() => {
-    const search = searchParams.get('search') || '';
-    const city = searchParams.get('city') || 'All Cities';
-    const bedrooms = searchParams.get('bedrooms') || 'Any';
-    const sortBy = searchParams.get('sortBy') || 'default';
-    
-    let type = searchParams.get('type') || 'All';
-    let category = searchParams.get('category') || '';
-
-    // Normalize plural type parameters to singular type filters, or move category type matching
-    const pluralToSingular = {
-      'Apartments': 'Apartment',
-      'Villas': 'Villa',
-      'Plots': 'Plot',
-      'Commercial': 'Commercial'
-    };
-
-    if (pluralToSingular[type]) {
-      type = pluralToSingular[type];
-    } else if (type === 'Luxury Homes') {
-      category = 'Luxury Homes';
-      type = 'All';
-    }
-
-    setFilters({
-      search,
-      type,
-      category,
-      city,
-      bedrooms,
-      priceMin: 0,
-      priceMax: Infinity,
-      sortBy,
-    });
-  }, [searchParams]);
+  const currentParamsString = searchParams.toString();
+  if (currentParamsString !== prevParamsString) {
+    setPrevParamsString(currentParamsString);
+    setFilters(parseFiltersFromParams(searchParams));
+  }
 
   const filteredProperties = useMemo(() => {
     let result = [...properties];

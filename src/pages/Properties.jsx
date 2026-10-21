@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  FaSearch, FaFilter, FaSort, FaTh, FaList,
+  FaSearch, FaTh, FaList,
   FaMapMarkerAlt, FaTimes, FaSlidersH
 } from 'react-icons/fa';
 import PropertyCard from '../components/PropertyCard/PropertyCard';
